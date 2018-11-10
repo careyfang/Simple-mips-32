@@ -24,7 +24,7 @@ main:
 	la $a0, Task
 	syscall				# Ask the user for input
 	
-	# Read an integer
+	
 	li $v0, 5			# Call code for read integer
 	syscall 
 	move $t0, $v0
@@ -46,12 +46,10 @@ L3:
 	
 	
 L1:							
-	# Print Task to console
 	li $v0, 4
-	la $a0, Task
+	la $a0, Task			# Print Task to console
 	syscall				# Ask the user for input
 	
-	# Read an integer
 	li $v0, 5			# Call code for read integer
 	syscall
 
@@ -60,12 +58,11 @@ L1:
 	
 	add $t1, $t1, $t0		# $t1 = $t1 + $t0 (add with previous integer)	
 	
-	blt $t0, $t2, L2			# Branch to L2 if $t0 < $t2
+	blt $t0, $t2, L2		# Branch to L2 if $t0 < $t2
 					# Keep going if $t2 < $t0
 	
 	bgt $t0, $t3, L3		# Branch to L3 if $t0 > $t3
 	j L1				# Loop to L1
-
 
 	
 Result:
@@ -94,6 +91,6 @@ Result:
 	move $a0, $t3
 	syscall				# Print out the biggest value
 	
-	# Exit the program
-	li $v0, 10
+					
+	li $v0, 10			# Exit the program
 	syscall
